@@ -1,1 +1,1 @@
-gunicorn timing.app:app --reload
+gunicorn timing.app:app --reload $*
