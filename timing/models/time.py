@@ -3,7 +3,6 @@ from sqlalchemy.orm import relationship
 
 from timing.db.base import DeclarativeBase
 
-
 DATETIME_FORMAT = '%Y-%m-%dT%H:%M:%S'
 
 

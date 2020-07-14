@@ -1,7 +1,8 @@
 from random import randint
 
-from locust import between, task
 from locust.contrib.fasthttp import FastHttpUser
+
+from locust import between, task
 
 
 class PerformanceTest(FastHttpUser):
