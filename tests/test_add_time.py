@@ -1,29 +1,18 @@
-from datetime import datetime
 from random import randint
-from time import sleep
 
 import falcon
 
-
-def _register(client):
-    username = str(randint(1000, 9999))
-    user_data = {
-        'username': username
-    }
-
-    register_response = client.simulate_post('/register', json=user_data)
-    user = falcon.json.loads(register_response.content.decode())
-    return user
+from tests.common import add_mock_user
 
 
 def test_add_time(client):
-    user = _register(client)
+    user = add_mock_user()
 
     time_data = {
         'hours': randint(1, 10),
     }
     auth_header = {
-        'X-IDENTITY': str(user['id']),
+        'X-IDENTITY': str(user.id),
     }
 
     time_response = client.simulate_post(
@@ -39,15 +28,13 @@ def test_add_time(client):
 
 
 def test_forgotten_add_time(client):
-    user = _register(client)
-
+    user = add_mock_user()
     time_data = {
         'hours': randint(1, 10),
     }
     auth_header = {
-        'X-IDENTITY': str(user['id']),
+        'X-IDENTITY': str(user.id),
     }
-
     t = '1010-07-14T17:42:53'
 
     time_response = client.simulate_post(
