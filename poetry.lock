@@ -242,7 +242,7 @@ python-versions = ">=3.5"
 version = "8.4.0"
 
 [[package]]
-category = "main"
+category = "dev"
 description = "MessagePack (de)serializer."
 name = "msgpack"
 optional = false
@@ -470,7 +470,7 @@ test = ["coverage (>=5.0.3)", "zope.event", "zope.testing"]
 testing = ["coverage (>=5.0.3)", "zope.event", "zope.testing"]
 
 [metadata]
-content-hash = "6a437c2ff0f4b95df583e391a5c6355e023559c5b368bceaa03d15105758ed81"
+content-hash = "913490a03f4a48be3c8c83a845f10503070b6253518026fc2e1537503e440e3d"
 python-versions = "^3.8"
 
 [metadata.files]
