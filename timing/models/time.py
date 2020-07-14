@@ -1,7 +1,10 @@
-from sqlalchemy import Integer, Unicode, Column, ForeignKey, DateTime, func
+from sqlalchemy import Integer, Column, ForeignKey, DateTime, func
 from sqlalchemy.orm import relationship
 
 from timing.db.base import DeclarativeBase
+
+
+DATETIME_FORMAT = '%Y-%m-%dT%H:%M:%S'
 
 
 class Time(DeclarativeBase):
@@ -13,11 +16,16 @@ class Time(DeclarativeBase):
     created_at = Column(DateTime, server_default=func.now())
     hours = Column(Integer, nullable=False)
 
-    user = relationship('User', foreign_keys=user_id, uselist=False)
+    user = relationship(
+        'User',
+        foreign_keys=user_id,
+        uselist=False,
+        back_populates='times',
+    )
 
     def to_dict(self):
         return dict(
             id=self.id,
             hours=self.hours,
-            createdAt=self.created_at.strftime('%Y-%m-%dT%H:%M:%S'),
+            createdAt=self.created_at.strftime(DATETIME_FORMAT),
         )
