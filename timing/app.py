@@ -23,7 +23,7 @@ def create_app():
     app.add_route('/time/calculator', time_resource, suffix='calculator')
 
     # Setup tables
-    table_utils.drop_tables(metadata)
+    # table_utils.drop_tables(metadata)
     table_utils.create_tables(metadata)
 
     return app

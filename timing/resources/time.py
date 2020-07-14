@@ -42,7 +42,7 @@ class TimesResource(object):
     @falcon.before(Authorization())
     def on_get_calculator(self, req, resp):
         sum_times = self._get_times(req, query_on=func.sum(Time.hours)).one()
-        sum_times = int(sum_times[0])
+        sum_times = int(sum_times[0] or 0)
 
         resp.media = Time(
             created_at=datetime.utcnow(),
