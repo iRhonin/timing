@@ -19,8 +19,3 @@ SQLALCHEMY = dict(
     ),
 )
 
-JWT = dict(
-    secret='change-me',
-    maxage=2678400,  # 30 Days
-    algorithm='HS256',
-)
