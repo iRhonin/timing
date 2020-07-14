@@ -6,9 +6,11 @@ from timing.db.engine import metadata
 from timing.db.session import Session
 from timing.db.middleware import SQLAlchemySessionManager
 from timing.resources.register import RegisterResource
+from timing.resources.time import TimesResource
 
 
 register_resource = RegisterResource()
+times_resource = TimesResource()
 
 # user = UserResource()
 # time = TimeResource()
@@ -20,7 +22,8 @@ app = falcon.API(
 )
 
 app.add_route('/register', register_resource)
-# app.add_route('/time', user_resource)
+app.add_route('/time/add', times_resource)
+app.add_route('/time/get', times_resource)
 
 # Setup tables
 table_utils.drop_tables(metadata)

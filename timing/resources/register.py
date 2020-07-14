@@ -1,5 +1,3 @@
-import falcon
-
 from timing.models.user import User
 
 
