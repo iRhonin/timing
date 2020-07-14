@@ -16,8 +16,9 @@ class SQLAlchemySessionManager:
             return
 
         if req.context.get('db_session'):
-            if not req_succeeded:
+            if req_succeeded:
+                req.context['db_session'].commit()
+            else:
                 req.context['db_session'].rollback()
 
-            req.context['db_session'].commit()
-            req.context['db_session'].remove()
+            req.context['db_session'].close()

@@ -1,20 +1,26 @@
-MYSQL = {
-    'engine': 'mysql',
-    'pool_size': 100,
-    'debug': False,
-    'username': 'mysql',
-    'password': 'mysql',
-    'host': 'mysql',
-    'port': 5432,
-    'db_name': 'timing',
-}
+MYSQL = dict(
+    engine='mysql',
+    pool_size=100,
+    debug=False,
+    username='timing',
+    password='timing',
+    host='127.0.0.1',
+    port=3306,
+    db_name='timing',
+)
 
-SQLALCHEMY = {
-    'debug': False,
-    'sessionmaker': {
-        'autoflush': False,
-        'autocommit': False,
-        'expire_on_commit': True,
-        'twophase': False,
-    }
-}
+SQLALCHEMY = dict(
+    debug=False,
+    sessionmaker=dict(
+        autoflush=False,
+        autocommit=False,
+        expire_on_commit=True,
+        twophase=False,
+    ),
+)
+
+JWT = dict(
+    secret='change-me',
+    maxage=2678400,  # 30 Days
+    algorithm='HS256',
+)
